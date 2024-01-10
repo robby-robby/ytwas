@@ -12,6 +12,18 @@ sam build
 sam deploy --guided --stack-name ytwas
 ```
 
+## Siri shortcut
+
+![Screenshot](./screenshot.png)
+
+- Replace api url from output after `sam deploy` which will look like this:
+
+```
+  API Gateway endpoint URL for Prod stage for ytwas function"
+
+  https://[IMPORTANT PART OF API URL IS HERE].execute-api.us-east-1.amazonaws.com/Prod/convert/"
+```
+
 ## Fetch, tail, and filter Lambda function logs
 
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
