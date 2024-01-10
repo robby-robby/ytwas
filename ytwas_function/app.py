@@ -9,7 +9,7 @@ import string
 
 
 def random_string(length=32):
-    letters = string.ascii_lowercase
+    letters = string.ascii_lowercase + string.digits
     result_str = "".join(random.choice(letters) for i in range(length))
     return result_str
 
@@ -47,7 +47,6 @@ def dlv(url: str) -> str:
         Params={"Bucket": bucket_name, "Key": downloaded},
         ExpiresIn=300,
     )
-
     return url
 
 
@@ -68,5 +67,5 @@ def lambda_handler(event, context):
     }
 
 
-if __name__ == "__main__":
-    print(dlv("https://www.youtube.com/watch?v=TLwhqmf4Td4"))
+# if __name__ == "__main__":
+#     print(dlv("https://www.youtube.com/watch?v=TLwhqmf4Td4"))

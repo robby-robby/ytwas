@@ -1,8 +1,8 @@
 version = 0.1
 [default.deploy.parameters]
-stack_name = "foobarbizzbazz"
+stack_name = "ytwas"
 resolve_s3 = true
-s3_prefix = "foobarbizzbazz"
+s3_prefix = "ytwas"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
-image_repositories = ["HelloWorldFunction=443971207211.dkr.ecr.us-east-1.amazonaws.com/foobarbizzbazz1f0e9d51/helloworldfunction19d43fc4repo"]
+image_repositories = []
