@@ -6,15 +6,11 @@ Description: >
 Globals:
   Function:
     Timeout: 180
-    Environment:
-      Variables:
-        MY_S3_BUCKET: !Ref MyBucket
 
 Resources:
   MyBucket:
     Type: "AWS::S3::Bucket"
     Properties:
-      BucketName: !Sub "${AWS::StackName}-s3bucket"
       LifecycleConfiguration:
         Rules:
           - Id: DeleteAfterOneDay
@@ -27,10 +23,21 @@ Resources:
   YtwasFunction:
     Type: AWS::Serverless::Function
     Properties:
+      Environment:
+        Variables:
+          MY_S3_BUCKET: !Ref MyBucket
       Runtime: python3.11
       Handler: app.lambda_handler
       CodeUri: ./ytwas_function
-      Policies: AmazonS3FullAccess
+      Policies:
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - "s3:PutObject"
+                - "s3:PutObjectAcl"
+              Resource:
+                Fn::Sub: ${MyBucket.Arn}/*
       Events:
         Ytwas:
           Type: Api
