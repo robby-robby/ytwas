@@ -35,7 +35,7 @@ def dlv(url: str) -> str:
     # Now that the file is on disk, we can read and upload it to S3 in a streaming manner
     s3 = boto3.resource("s3")
 
-    bucket_name = os.environ["MY_S3_BUCKET"] or "ytwas-s3bucket"
+    bucket_name = os.environ["MY_S3_BUCKET"]
 
     with open(tmpfile, "rb") as data:
         s3.Bucket(bucket_name).put_object(Key=downloaded, Body=data)
